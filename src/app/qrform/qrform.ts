@@ -19,9 +19,8 @@ export class QrformComponent {
 
   @ViewChild('stickerRef', { static: false }) stickerRef!: ElementRef;
 
-  generateQr() {
-  const baseUrl = 'http://localhost:4200/profile'; // local dev route
-
+generateQr() {
+  const baseUrl = 'https://vital-id-theta.vercel.app/profile';
   this.qrData = `${baseUrl}?name=${encodeURIComponent(this.name)}&email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}`;
 }
 
