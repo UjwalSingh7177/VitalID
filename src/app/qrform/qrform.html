@@ -1,0 +1,24 @@
+<div class="qrform-container">
+  <h2 class="title">Generate Your Sticker QR</h2>
+
+  <form (ngSubmit)="generateQr()" class="form">
+    <input type="text" [(ngModel)]="name" name="name" placeholder="Enter your name" required />
+    <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required />
+    <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Enter your phone" required />
+
+    <button type="submit" class="btn">Generate QR</button>
+  </form>
+
+  <div class="qr-wrapper" *ngIf="qrData">
+    <div class="sticker" #stickerRef>
+      <qrcode
+        [qrdata]="qrData"
+        [width]="200"
+        [errorCorrectionLevel]="'M'">
+      </qrcode>
+      <p class="sticker-text">🎉 StickyQR 🎉</p>
+    </div>
+
+    <button class="btn download-btn" (click)="downloadQr()">Download QR</button>
+  </div>
+</div>

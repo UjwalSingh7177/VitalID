@@ -1,0 +1,126 @@
+/* Navbar Base */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #0d47a1, #1565c0);
+  color: white;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo a {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  animation: fadeInLeft 1s ease-in-out;
+}
+
+/* Links */
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  animation: fadeInRight 1s ease-in-out;
+}
+
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s;
+}
+
+.navbar-links li a::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #ffca28;
+  transition: width 0.3s;
+  margin: auto;
+}
+
+.navbar-links li a:hover {
+  color: #ffca28;
+}
+
+.navbar-links li a:hover::after {
+  width: 100%;
+}
+
+/* Hamburger (hidden on desktop) */
+.menu-toggle {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    color: white;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background: #0d47a1;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    text-align: center;
+    padding: 15px 0;
+  }
+
+  .navbar-links.show {
+    display: flex;
+    animation: fadeInDown 0.4s ease-in-out;
+  }
+
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+.qrform-wrapper {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+.btn-small {
+  background: #ffca28;
+  color: #0d47a1;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-small:hover {
+  background: #fbc02d;
+}
+

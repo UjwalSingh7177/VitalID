@@ -1,0 +1,129 @@
+.qrform-container {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  text-align: center;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.title {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #0d47a1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+input {
+  padding: 10px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  transition: border 0.3s;
+}
+
+input:focus {
+  border-color: #0d47a1;
+  outline: none;
+}
+
+.btn {
+  background: linear-gradient(90deg, #0d47a1, #1565c0);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(90deg, #1565c0, #0d47a1);
+}
+
+.qr-wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.sticker {
+  display: inline-block;
+  padding: 20px;
+  background: #ffca28;
+  border-radius: 20px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  animation: popIn 0.6s ease-in-out;
+}
+
+.sticker-text {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #0d47a1;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 600px) {
+  .qrform-container {
+    width: 90%;
+    padding: 15px;
+  }
+  input {
+    font-size: 0.9rem;
+  }
+  .btn {
+    font-size: 0.9rem;
+  }
+}
+
+.download-btn {
+  margin-top: 12px;
+  background: #ffca28;
+  color: #0d47a1;
+  font-weight: bold;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #ffc107;
+  transform: scale(1.05);
+}
+
+.sticker {
+  display: inline-block;
+  padding: 20px;
+  background: linear-gradient(135deg, #ffca28, #ff9800);
+  border-radius: 25px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+  animation: popIn 0.6s ease-in-out;
+  text-align: center;
+  border: 4px dashed #0d47a1;
+}
+
+.sticker-text {
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #0d47a1;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+}

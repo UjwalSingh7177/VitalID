@@ -1,0 +1,22 @@
+<nav class="navbar">
+  <div class="navbar-logo">
+    <a href="/">StickyQR</a>
+  </div>
+
+  <div class="menu-toggle" (click)="toggleMenu()">☰</div>
+
+  <ul class="navbar-links" id="navbar-links">
+    <li><a href="/">Home</a></li>
+    <li><a href="/generate">Generate QR</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/contact">Contact</a></li>
+    <li>
+      <button class="btn-small" (click)="toggleQrForm()">QR Form</button>
+    </li>
+  </ul>
+</nav>
+
+<!-- ✅ Show QR form under navbar -->
+<div *ngIf="showQrForm" class="qrform-wrapper">
+  <app-qrform></app-qrform>
+</div>
