@@ -19,4 +19,9 @@ export class NavbarComponent {
     const navLinks = document.getElementById('navbar-links');
     navLinks?.classList.toggle('show');
   }
+  closeMenu() {
+  const navLinks = document.getElementById('navbar-links');
+  navLinks?.classList.remove('show');
+}
+
 }
