@@ -6,19 +6,43 @@
     <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required />
     <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Enter your phone" required />
 
+    <!-- Select Design -->
+   <div class="custom-select">
+  <select [(ngModel)]="selectedDesign" name="design">
+    <option value="design1">⚠️ Safety Yellow</option>
+    <option value="design2">🚨 Emergency Red</option>
+    <option value="design3">📱 Clean Blue</option>
+    <option value="design4">🆘 Royal Frame</option>
+  </select>
+</div>
+
+
+    <!-- Custom Message -->
+    <input type="text" [(ngModel)]="customText" name="customText"
+           placeholder="Enter custom sticker text (e.g. 'In case of accident scan me')" />
+
     <button type="submit" class="btn">Generate QR</button>
   </form>
 
   <div class="qr-wrapper" *ngIf="qrData">
-    <div class="sticker" #stickerRef>
-      <qrcode
-        [qrdata]="qrData"
-        [width]="200"
-        [errorCorrectionLevel]="'M'">
-      </qrcode>
-      <p class="sticker-text">🎉 StickyQR 🎉</p>
+    <div class="sticker" [ngClass]="selectedDesign" #stickerRef>
+      <div class="qr-box">
+        <qrcode
+          [qrdata]="qrData"
+          [width]="200"
+          [errorCorrectionLevel]="'M'"
+          [colorDark]="'#000000'"
+          [colorLight]="'#ffffff'">
+        </qrcode>
+      </div>
+
+      <!-- Dynamic Sticker Text -->
+      <p class="sticker-text">
+        {{ customText || '⚠️ In Case of Emergency, Scan Me' }}
+      </p>
     </div>
 
-    <button class="btn download-btn" (click)="downloadQr()">Download QR</button>
+    <button class="btn download-btn" (click)="downloadQr()">Download Sticker</button>
+    <button class="btn download-btn alt" (click)="downloadRawQr()">Download QR Only</button>
   </div>
 </div>

@@ -51,22 +51,65 @@ input:focus {
 .qr-wrapper {
   margin-top: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
 .sticker {
   display: inline-block;
   padding: 20px;
-  background: #ffca28;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  background: linear-gradient(135deg, #ffca28, #ff9800);
+  border-radius: 25px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
   animation: popIn 0.6s ease-in-out;
+  text-align: center;
+  border: 4px dashed #0d47a1;
 }
 
 .sticker-text {
-  margin-top: 10px;
+  margin-top: 12px;
   font-weight: bold;
+  font-size: 1.2rem;
   color: #0d47a1;
+  text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+}
+
+.qr-box {
+  background: #fff !important;
+  padding: 10px;
+  border-radius: 12px;
+  display: inline-block;
+}
+
+.qr-box canvas {
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.download-btn {
+  background: #ffca28;
+  color: #0d47a1;
+  font-weight: bold;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.download-btn:hover {
+  background: #ffc107;
+  transform: scale(1.05);
+}
+
+.download-btn.alt {
+  background: #0d47a1;
+  color: #fff;
+}
+
+.download-btn.alt:hover {
+  background: #1565c0;
 }
 
 @keyframes fadeIn {
@@ -91,39 +134,78 @@ input:focus {
     font-size: 0.9rem;
   }
 }
+/* Existing styles ... keep them */
 
-.download-btn {
-  margin-top: 12px;
-  background: #ffca28;
+/* Sticker Design Variants */
+.sticker.design1 {
+  background: linear-gradient(135deg, #ffeb3b, #fbc02d);
+  border: 6px dashed #000;
+  color: #000;
+}
+
+.sticker.design2 {
+  background: linear-gradient(135deg, #f44336, #b71c1c);
+  border: 5px solid #fff;
+  color: #fff;
+}
+
+.sticker.design3 {
+  background: #fff;
+  border: 6px solid #1565c0;
+  color: #1565c0;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.sticker.design4 {
+  background: linear-gradient(135deg, #fdd835, #ffb300);
+  border: 6px double #0d47a1;
   color: #0d47a1;
-  font-weight: bold;
-  border: none;
-  padding: 10px 18px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: transform 0.2s ease;
-}
-
-.download-btn:hover {
-  background: #ffc107;
-  transform: scale(1.05);
-}
-
-.sticker {
-  display: inline-block;
-  padding: 20px;
-  background: linear-gradient(135deg, #ffca28, #ff9800);
-  border-radius: 25px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.4);
-  animation: popIn 0.6s ease-in-out;
-  text-align: center;
-  border: 4px dashed #0d47a1;
 }
 
 .sticker-text {
   margin-top: 12px;
   font-weight: bold;
   font-size: 1.2rem;
-  color: #0d47a1;
   text-shadow: 1px 1px 2px rgba(255,255,255,0.6);
+}
+/* Wrapper for select */
+.custom-select {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* Style the select */
+.custom-select select {
+  width: 100%;
+  padding: 10px;
+  border: 2px solid #0d47a1;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: #0d47a1;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  appearance: none; /* hide default arrow */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Custom arrow */
+.custom-select::after {
+  content: "▼";
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #0d47a1;
+  pointer-events: none;
+  font-size: 0.8rem;
+}
+
+/* Hover effect */
+.custom-select select:hover {
+  border-color: #1565c0;
+  transform: scale(1.02);
 }
