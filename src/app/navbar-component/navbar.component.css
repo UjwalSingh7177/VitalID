@@ -109,18 +109,68 @@
   justify-content: center;
   animation: fadeIn 0.4s ease-in-out;
 }
-
-.btn-small {
-  background: #ffca28;
-  color: #0d47a1;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  transition: background 0.3s;
+/* Base navbar link */
+.navbar-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 6px 0;
+  position: relative;
+  transition: color 0.3s ease;
 }
+
+/* Animated underline (default hidden) */
+.navbar-links li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #ffca28;
+  transition: width 0.3s ease;
+}
+
+/* Hover + Active state */
+.navbar-links li a:hover,
+.navbar-links li a.active {
+  color: #ffca28;
+}
+
+/* Underline expands only for hover OR active */
+.navbar-links li a:hover::after,
+.navbar-links li a.active::after {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .nav-btn {
+    display: block;
+    width: 80%;
+    margin: 8px auto;
+    text-align: center;
+    font-size: 1rem;
+    padding: 10px;
+  }
+}
+
 
 .btn-small:hover {
   background: #fbc02d;
 }
 
+.language-selector select {
+  padding: 5px 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.language-selector select:focus {
+  outline: none;
+  border-color: #007bff;
+}

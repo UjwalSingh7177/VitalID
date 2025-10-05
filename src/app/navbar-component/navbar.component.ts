@@ -1,27 +1,33 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { QrformComponent } from '../qrform/qrform';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, QrformComponent],   // ✅ import Qrform here
+  imports: [CommonModule, RouterLink, RouterLinkActive, TranslateModule], // ✅ add TranslateModule here
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  showQrForm = false;
-
-  toggleQrForm() {
-    this.showQrForm = !this.showQrForm;
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
   }
+
   toggleMenu() {
     const navLinks = document.getElementById('navbar-links');
     navLinks?.classList.toggle('show');
   }
-  closeMenu() {
-  const navLinks = document.getElementById('navbar-links');
-  navLinks?.classList.remove('show');
-}
 
+  closeMenu() {
+    const navLinks = document.getElementById('navbar-links');
+    navLinks?.classList.remove('show');
+  }
+
+  switchLanguage(event: any) {
+    const lang = event.target.value;
+    this.translate.use(lang);
+  }
 }

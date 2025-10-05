@@ -1,9 +1,23 @@
 <div class="profile-card animate">
-  <h2 class="title">👤 User Information</h2>
+  <h2 class="title">👤 {{ 'PROFILE.TITLE' | translate }}</h2>
 
   <div class="info">
-    <p><span class="label">Name:</span> {{ name }}</p>
-    <p><span class="label">Email:</span> {{ email }}</p>
-    <p><span class="label">Phone:</span> {{ phone }}</p>
+    <p><span class="label">{{ 'PROFILE.NAME' | translate }}:</span> {{ name }}</p>
+    <p><span class="label">{{ 'PROFILE.EMAIL' | translate }}:</span> {{ email }}</p>
+    <p><span class="label">{{ 'PROFILE.PHONE' | translate }}:</span> {{ phone }}</p>
+  </div>
+
+  <!-- 🆘 Emergency Section -->
+  <div class="emergency-section">
+    <h3>🚑 {{ 'PROFILE.EMERGENCY_TITLE' | translate }}</h3>
+    <ul>
+      <li><strong>108:</strong> {{ 'PROFILE.EMERGENCY_108' | translate }}</li>
+      <li><strong>112:</strong> {{ 'PROFILE.EMERGENCY_112' | translate }}</li>
+      <li><strong>1800 121 911 911:</strong> {{ 'PROFILE.EMERGENCY_RED' | translate }}</li>
+    </ul>
+
+    <button class="btn ambulance-btn" (click)="callAmbulance()">
+      ☎️ {{ 'PROFILE.BUTTON_CALL' | translate }}
+    </button>
   </div>
 </div>

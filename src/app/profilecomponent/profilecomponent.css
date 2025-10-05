@@ -70,3 +70,34 @@
     margin-bottom: 0.3rem;
   }
 }
+.emergency-section {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #fff8e1;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.emergency-section h3 {
+  margin-bottom: 0.5rem;
+  color: #d32f2f;
+}
+
+.emergency-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.emergency-section li {
+  margin: 4px 0;
+}
+
+.ambulance-btn {
+  margin-top: 1rem;
+  background-color: #d32f2f;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}

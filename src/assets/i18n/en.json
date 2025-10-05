@@ -1,0 +1,38 @@
+{
+  "NAV": {
+    "HOME": "Home",
+    "GENERATE": "Generate QR",
+    "PROFILE": "Profile"
+  },
+  "PROFILE": {
+  "TITLE": "Hurry Up!",
+  "NAME": "Name",
+  "EMAIL": "Email",
+  "PHONE": "Phone",
+  "EMERGENCY_TITLE": "Emergency Numbers",
+  "EMERGENCY_108": "Ambulance Service (Free Call)",
+  "EMERGENCY_112": "Unified Emergency Response (Police, Fire, Ambulance)",
+  "EMERGENCY_RED": "RED.Health Helpline (Toll-Free)",
+  "BUTTON_CALL": "Call Ambulance"
+},
+  "QRFORM": {
+    "TITLE": "Generate Your Sticker QR",
+    "PLACEHOLDER_NAME": "Enter your name",
+    "PLACEHOLDER_EMAIL": "Enter your email",
+    "PLACEHOLDER_PHONE": "Enter your phone",
+    "DESIGN1": "Safety Yellow",
+    "DESIGN2": "Emergency Red",
+    "DESIGN3": "Clean Blue",
+    "DESIGN4": "Royal Frame",
+    "PLACEHOLDER_CUSTOM": "Enter custom sticker text (e.g. 'In case of accident scan me')",
+    "BUTTON_GENERATE": "Generate QR",
+    "BUTTON_DOWNLOAD": "Download Sticker",
+    "BUTTON_DOWNLOAD_QR": "Download QR Only",
+    "DEFAULT_STICKER": "⚠️ In Case of Emergency, Scan Me"
+  },
+  "FOOTER": {
+    "CONTACT": "📩 Contact",
+    "LINKEDIN": "🔗 LinkedIn",
+    "LANGUAGE": "🌐 Language"
+  }
+}

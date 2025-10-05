@@ -1,0 +1,34 @@
+{
+  "NAV": {
+    "HOME": "होम",
+    "GENERATE": "QR तयार करा",
+    "PROFILE": "प्रोफाइल"
+  },
+  "PROFILE": {
+    "TITLE": "लवकर करा!",
+    "NAME": "नाव",
+    "EMAIL": "ईमेल",
+    "PHONE": "फोन",
+    "EMERGENCY_TITLE": "आपत्कालीन क्रमांक",
+"EMERGENCY_108": "रुग्णवाहिका सेवा (मोफत कॉल)",
+"EMERGENCY_112": "एकत्रित आपत्कालीन सेवा (पोलीस, फायर, रुग्णवाहिका)",
+"EMERGENCY_RED": "RED.Health हेल्पलाइन (टोल-फ्री)",
+"BUTTON_CALL": "ॲम्ब्युलन्स कॉल करा"
+
+  },
+  "QRFORM": {
+    "TITLE": "आपला स्टिकर QR तयार करा",
+    "PLACEHOLDER_NAME": "आपले नाव टाका",
+    "PLACEHOLDER_EMAIL": "आपला ईमेल टाका",
+    "PLACEHOLDER_PHONE": "आपला फोन टाका",
+    "DESIGN1": "सेफ्टी पिवळा",
+    "DESIGN2": "आपत्कालीन लाल",
+    "DESIGN3": "स्वच्छ निळा",
+    "DESIGN4": "रॉयल फ्रेम",
+    "PLACEHOLDER_CUSTOM": "कस्टम मजकूर टाका (उदा. 'अपघात झाल्यास स्कॅन करा')",
+    "BUTTON_GENERATE": "QR तयार करा",
+    "BUTTON_DOWNLOAD": "स्टिकर डाउनलोड करा",
+    "BUTTON_DOWNLOAD_QR": "फक्त QR डाउनलोड करा",
+    "DEFAULT_STICKER": "⚠️ आपत्कालीन स्थितीत मला स्कॅन करा"
+  }
+}

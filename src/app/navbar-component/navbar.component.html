@@ -1,23 +1,38 @@
 <nav class="navbar">
   <div class="navbar-logo">
-    <a href="/">VitalID</a>
+    <a routerLink="/">{{ 'NAV.HOME' | translate }}</a>
   </div>
 
   <div class="menu-toggle" (click)="toggleMenu()">☰</div>
 
-<ul class="navbar-links" id="navbar-links">
-  <li><a routerLink="/" (click)="closeMenu()">Home</a></li>
-  <li><a routerLink="/generate" (click)="closeMenu()">Generate QR</a></li>
-  <li><a routerLink="/about" (click)="closeMenu()">About</a></li>
-  <li><a routerLink="/contact" (click)="closeMenu()">Contact</a></li>
-  <li>
-    <button class="btn-small" (click)="toggleQrForm()" (click)="closeMenu()">QR Form</button>
-  </li>
-</ul>
+  <ul class="navbar-links" id="navbar-links">
+    <li>
+      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
+        {{ 'NAV.HOME' | translate }}
+      </a>
+    </li>
+    <li>
+      <a routerLink="/qrform" routerLinkActive="active" (click)="closeMenu()">
+        {{ 'NAV.GENERATE' | translate }}
+      </a>
+    </li>
+    <li>
+      <a routerLink="/profile" routerLinkActive="active" (click)="closeMenu()">
+        {{ 'NAV.PROFILE' | translate }}
+      </a>
+    </li>
 
+    <!-- 🌐 Language Selector -->
+    <li class="language-selector">
+      <select (change)="switchLanguage($event)">
+        <option value="en">English</option>
+        <option value="hi">हिन्दी</option>
+        <option value="mr">मराठी</option>
+        <option value="ta">தமிழ்</option>
+        <option value="te">తెలుగు</option>
+        <option value="bn">বাংলা</option>
+        <option value="gu">ગુજરાતી</option>
+      </select>
+    </li>
+  </ul>
 </nav>
-
-<!-- ✅ Show QR form under navbar -->
-<div *ngIf="showQrForm" class="qrform-wrapper">
-  <app-qrform></app-qrform>
-</div>

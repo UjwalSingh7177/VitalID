@@ -3,11 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QRCodeComponent } from 'angularx-qrcode';
 import * as htmlToImage from 'html-to-image';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-qrform',
   standalone: true,
-  imports: [CommonModule, FormsModule, QRCodeComponent],
+  imports: [CommonModule, FormsModule, QRCodeComponent, TranslateModule],
   templateUrl: './qrform.html',
   styleUrls: ['./qrform.css']
 })
@@ -52,4 +53,6 @@ export class QrformComponent {
       link.click();
     }
   }
+
+  
 }

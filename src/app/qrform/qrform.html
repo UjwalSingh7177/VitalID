@@ -1,27 +1,23 @@
 <div class="qrform-container">
-  <h2 class="title">Generate Your Sticker QR</h2>
+  <h2 class="title">{{ 'QRFORM.TITLE' | translate }}</h2>
 
   <form (ngSubmit)="generateQr()" class="form">
-    <input type="text" [(ngModel)]="name" name="name" placeholder="Enter your name" required />
-    <input type="email" [(ngModel)]="email" name="email" placeholder="Enter your email" required />
-    <input type="tel" [(ngModel)]="phone" name="phone" placeholder="Enter your phone" required />
+    <input type="text" [(ngModel)]="name" name="name" [placeholder]="'QRFORM.PLACEHOLDER_NAME' | translate" required />
+    <input type="email" [(ngModel)]="email" name="email" [placeholder]="'QRFORM.PLACEHOLDER_EMAIL' | translate" required />
+    <input type="tel" [(ngModel)]="phone" name="phone" [placeholder]="'QRFORM.PLACEHOLDER_PHONE' | translate" required />
 
-    <!-- Select Design -->
-   <div class="custom-select">
-  <select [(ngModel)]="selectedDesign" name="design">
-    <option value="design1">⚠️ Safety Yellow</option>
-    <option value="design2">🚨 Emergency Red</option>
-    <option value="design3">📱 Clean Blue</option>
-    <option value="design4">🆘 Royal Frame</option>
-  </select>
-</div>
+    <div class="custom-select">
+      <select [(ngModel)]="selectedDesign" name="design">
+        <option value="design1">⚠️ {{ 'QRFORM.DESIGN1' | translate }}</option>
+        <option value="design2">🚨 {{ 'QRFORM.DESIGN2' | translate }}</option>
+        <option value="design3">📱 {{ 'QRFORM.DESIGN3' | translate }}</option>
+        <option value="design4">🆘 {{ 'QRFORM.DESIGN4' | translate }}</option>
+      </select>
+    </div>
 
+    <input type="text" [(ngModel)]="customText" name="customText" [placeholder]="'QRFORM.PLACEHOLDER_CUSTOM' | translate" />
 
-    <!-- Custom Message -->
-    <input type="text" [(ngModel)]="customText" name="customText"
-           placeholder="Enter custom sticker text (e.g. 'In case of accident scan me')" />
-
-    <button type="submit" class="btn">Generate QR</button>
+    <button type="submit" class="btn">{{ 'QRFORM.BUTTON_GENERATE' | translate }}</button>
   </form>
 
   <div class="qr-wrapper" *ngIf="qrData">
@@ -36,13 +32,12 @@
         </qrcode>
       </div>
 
-      <!-- Dynamic Sticker Text -->
       <p class="sticker-text">
-        {{ customText || '⚠️ In Case of Emergency, Scan Me' }}
+        {{ customText || ('QRFORM.DEFAULT_STICKER' | translate) }}
       </p>
     </div>
 
-    <button class="btn download-btn" (click)="downloadQr()">Download Sticker</button>
-    <button class="btn download-btn alt" (click)="downloadRawQr()">Download QR Only</button>
+    <button class="btn download-btn" (click)="downloadQr()">{{ 'QRFORM.BUTTON_DOWNLOAD' | translate }}</button>
+    <button class="btn download-btn alt" (click)="downloadRawQr()">{{ 'QRFORM.BUTTON_DOWNLOAD_QR' | translate }}</button>
   </div>
 </div>

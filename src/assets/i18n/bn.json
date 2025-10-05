@@ -1,0 +1,34 @@
+{
+  "NAV": {
+    "HOME": "হোম",
+    "GENERATE": "QR তৈরি করুন",
+    "PROFILE": "প্রোফাইল"
+  },
+  "PROFILE": {
+    "TITLE": "তাড়াতাড়ি করুন!",
+    "NAME": "নাম",
+    "EMAIL": "ইমেল",
+    "PHONE": "ফোন",
+    "EMERGENCY_TITLE": "জরুরি নম্বর",
+"EMERGENCY_108": "অ্যাম্বুলেন্স সার্ভিস (বিনামূল্যে কল)",
+"EMERGENCY_112": "একীভূত জরুরি সেবা (পুলিশ, ফায়ার, অ্যাম্বুলেন্স)",
+"EMERGENCY_RED": "RED.Health হেল্পলাইন (টোল-ফ্রি)",
+"BUTTON_CALL": "অ্যাম্বুলেন্স কল করুন"
+
+  },
+  "QRFORM": {
+    "TITLE": "আপনার স্টিকার QR তৈরি করুন",
+    "PLACEHOLDER_NAME": "আপনার নাম লিখুন",
+    "PLACEHOLDER_EMAIL": "আপনার ইমেল লিখুন",
+    "PLACEHOLDER_PHONE": "আপনার ফোন লিখুন",
+    "DESIGN1": "সেফটি হলুদ",
+    "DESIGN2": "জরুরি লাল",
+    "DESIGN3": "পরিষ্কার নীল",
+    "DESIGN4": "রয়্যাল ফ্রেম",
+    "PLACEHOLDER_CUSTOM": "কাস্টম টেক্সট লিখুন (যেমন 'দুর্ঘটনার সময় স্ক্যান করুন')",
+    "BUTTON_GENERATE": "QR তৈরি করুন",
+    "BUTTON_DOWNLOAD": "স্টিকার ডাউনলোড করুন",
+    "BUTTON_DOWNLOAD_QR": "শুধু QR ডাউনলোড করুন",
+    "DEFAULT_STICKER": "⚠️ জরুরী অবস্থায় আমাকে স্ক্যান করুন"
+  }
+}
