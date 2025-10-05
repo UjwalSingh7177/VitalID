@@ -14,38 +14,38 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class QrformComponent {
 
-  // 🧍 Personal Info
+  // Personal Info
   name = '';
   email = '';
   phone = '';
   bloodGroup = '';
   dob = '';
 
-  // 🚨 Emergency Contact
+  // Emergency Contact
   emergencyContactName = '';
   emergencyContactPhone = '';
 
-  // 🏥 Medical Info
+  // Medical Info
   medicalConditions = '';
   medications = '';
 
-  // 🚗 Vehicle Info
+  // Vehicle Info
   vehicleNumber = '';
   vehicleType = '';
   homeAddress = '';
 
-  // 🎨 QR Design and Custom Text
+  // QR Design and Custom Text
   selectedDesign = 'design1';
   customText = '';
 
-  // 🌐 Selected Language
-  selectedLanguage = 'en'; // default language
+  // Selected Language (default English)
+  selectedLanguage = 'en';
 
-  // 📸 QR Display + Download
+  // QR Data + Reference
   qrData = '';
   @ViewChild('stickerRef', { static: false }) stickerRef!: ElementRef;
 
-  // 🧩 Generate QR with full data
+  // Generate QR
   generateQr() {
     const baseUrl = 'https://vital-id-theta.vercel.app/profile';
 
@@ -62,30 +62,27 @@ export class QrformComponent {
       vehicleNumber: this.vehicleNumber,
       vehicleType: this.vehicleType,
       homeAddress: this.homeAddress,
-      lang: this.selectedLanguage // <-- include selected language
+      lang: this.selectedLanguage  // include language
     });
 
     this.qrData = `${baseUrl}?${params.toString()}`;
   }
 
-  // 🖼️ Download full sticker (QR + text + design)
+  // Download full sticker
   downloadQr() {
     if (this.stickerRef) {
-      htmlToImage.toPng(this.stickerRef.nativeElement, {
-        cacheBust: true,
-        pixelRatio: 6
-      })
-      .then((dataUrl: string) => {
-        const link = document.createElement('a');
-        link.href = dataUrl;
-        link.download = 'sticker-qr.png';
-        link.click();
-      })
-      .catch(err => console.error('Error generating sticker:', err));
+      htmlToImage.toPng(this.stickerRef.nativeElement, { cacheBust: true, pixelRatio: 6 })
+        .then((dataUrl: string) => {
+          const link = document.createElement('a');
+          link.href = dataUrl;
+          link.download = 'sticker-qr.png';
+          link.click();
+        })
+        .catch(err => console.error('Error generating sticker:', err));
     }
   }
 
-  // 🔲 Download only QR code (no sticker background)
+  // Download only QR
   downloadRawQr() {
     const qrCanvas = this.stickerRef.nativeElement.querySelector('canvas');
     if (qrCanvas) {
@@ -96,5 +93,4 @@ export class QrformComponent {
       link.click();
     }
   }
-
 }
