@@ -5,21 +5,44 @@
     "PROFILE": "Profile"
   },
   "PROFILE": {
-  "TITLE": "Hurry Up!",
-  "NAME": "Name",
-  "EMAIL": "Email",
-  "PHONE": "Phone",
-  "EMERGENCY_TITLE": "Emergency Numbers",
-  "EMERGENCY_108": "Ambulance Service (Free Call)",
-  "EMERGENCY_112": "Unified Emergency Response (Police, Fire, Ambulance)",
-  "EMERGENCY_RED": "RED.Health Helpline (Toll-Free)",
-  "BUTTON_CALL": "Call Ambulance"
-},
+    "TITLE": "Hurry Up!",
+    "NAME": "Name",
+    "EMAIL": "Email",
+    "PHONE": "Phone",
+    "BLOOD_GROUP": "Blood Group",
+    "DOB": "Date of Birth",
+    "HOME_ADDRESS": "Home Address",
+    "EMERGENCY_TITLE": "Emergency Numbers",
+    "EMERGENCY_108": "Ambulance Service (Free Call)",
+    "EMERGENCY_112": "Unified Emergency Response (Police, Fire, Ambulance)",
+    "EMERGENCY_RED": "RED.Health Helpline (Toll-Free)",
+    "BUTTON_CALL": "Call Ambulance",
+    "EMERGENCY_CONTACT_NAME": "Emergency Contact Name",
+    "EMERGENCY_CONTACT_PHONE": "Emergency Contact Number",
+    "MEDICAL_CONDITIONS": "Medical Conditions / Allergies",
+    "MEDICATIONS": "Medications (if any)",
+    "VEHICLE_NUMBER": "Vehicle Number",
+    "VEHICLE_TYPE": "Vehicle Type"
+  },
   "QRFORM": {
     "TITLE": "Generate Your Sticker QR",
+    "SECTION_PERSONAL": "🧍 Personal Information",
+    "SECTION_EMERGENCY": "🚨 Emergency Contact",
+    "SECTION_MEDICAL": "🏥 Medical Information",
+    "SECTION_VEHICLE": "🚗 Vehicle Information",
+    "SECTION_DESIGN": "🎨 QR Sticker Design",
     "PLACEHOLDER_NAME": "Enter your name",
     "PLACEHOLDER_EMAIL": "Enter your email",
     "PLACEHOLDER_PHONE": "Enter your phone",
+    "PLACEHOLDER_BLOOD_GROUP": "Enter Blood Group (e.g. O+)",
+    "PLACEHOLDER_DOB": "Enter Date of Birth (DD/MM/YYYY)",
+    "PLACEHOLDER_HOME_ADDRESS": "Enter Home Address (optional)",
+    "PLACEHOLDER_EMERGENCY_NAME": "Emergency Contact Name",
+    "PLACEHOLDER_EMERGENCY_PHONE": "Emergency Contact Number",
+    "PLACEHOLDER_MEDICAL_CONDITIONS": "Medical Conditions / Allergies",
+    "PLACEHOLDER_MEDICATIONS": "Medications (if any)",
+    "PLACEHOLDER_VEHICLE_NUMBER": "Vehicle Number (e.g. MH12AB1234)",
+    "PLACEHOLDER_VEHICLE_TYPE": "Vehicle Type (Bike / Car)",
     "DESIGN1": "Safety Yellow",
     "DESIGN2": "Emergency Red",
     "DESIGN3": "Clean Blue",
@@ -31,8 +54,8 @@
     "DEFAULT_STICKER": "⚠️ In Case of Emergency, Scan Me"
   },
   "FOOTER": {
-    "CONTACT": "📩 Contact",
-    "LINKEDIN": "🔗 LinkedIn",
-    "LANGUAGE": "🌐 Language"
+    "CONTACT_LABEL": "📩 Contact",
+    "LINKEDIN_LABEL": "🔗 LinkedIn",
+    "MADE_WITH": "❤️ Made with"
   }
 }

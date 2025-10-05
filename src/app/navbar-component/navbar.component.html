@@ -6,13 +6,13 @@
   <div class="menu-toggle" (click)="toggleMenu()">☰</div>
 
   <ul class="navbar-links" id="navbar-links">
-    <li>
+    <!-- <li>
       <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
         {{ 'NAV.HOME' | translate }}
       </a>
-    </li>
+    </li> -->
     <li>
-      <a routerLink="/qrform" routerLinkActive="active" (click)="closeMenu()">
+      <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">
         {{ 'NAV.GENERATE' | translate }}
       </a>
     </li>
@@ -32,6 +32,7 @@
         <option value="te">తెలుగు</option>
         <option value="bn">বাংলা</option>
         <option value="gu">ગુજરાતી</option>
+        <option value="tu">ತುಳು</option>
       </select>
     </li>
   </ul>

@@ -13,20 +13,62 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrls: ['./qrform.css']
 })
 export class QrformComponent {
+
+  // 🧍 Personal Info
   name = '';
   email = '';
   phone = '';
-  qrData = '';
-  selectedDesign = 'design1';  // default design
-  customText = '';             // user custom sticker message
+  bloodGroup = '';
+  dob = '';
 
+  // 🚨 Emergency Contact
+  emergencyContactName = '';
+  emergencyContactPhone = '';
+
+  // 🏥 Medical Info
+  medicalConditions = '';
+  medications = '';
+
+  // 🚗 Vehicle Info
+  vehicleNumber = '';
+  vehicleType = '';
+  homeAddress = '';
+
+  // 🎨 QR Design and Custom Text
+  selectedDesign = 'design1';
+  customText = '';
+
+  // 🌐 Selected Language
+  selectedLanguage = 'en'; // default language
+
+  // 📸 QR Display + Download
+  qrData = '';
   @ViewChild('stickerRef', { static: false }) stickerRef!: ElementRef;
 
+  // 🧩 Generate QR with full data
   generateQr() {
     const baseUrl = 'https://vital-id-theta.vercel.app/profile';
-    this.qrData = `${baseUrl}?name=${encodeURIComponent(this.name)}&email=${encodeURIComponent(this.email)}&phone=${encodeURIComponent(this.phone)}`;
+
+    const params = new URLSearchParams({
+      name: this.name,
+      email: this.email,
+      phone: this.phone,
+      bloodGroup: this.bloodGroup,
+      dob: this.dob,
+      emergencyContactName: this.emergencyContactName,
+      emergencyContactPhone: this.emergencyContactPhone,
+      medicalConditions: this.medicalConditions,
+      medications: this.medications,
+      vehicleNumber: this.vehicleNumber,
+      vehicleType: this.vehicleType,
+      homeAddress: this.homeAddress,
+      lang: this.selectedLanguage // <-- include selected language
+    });
+
+    this.qrData = `${baseUrl}?${params.toString()}`;
   }
 
+  // 🖼️ Download full sticker (QR + text + design)
   downloadQr() {
     if (this.stickerRef) {
       htmlToImage.toPng(this.stickerRef.nativeElement, {
@@ -43,6 +85,7 @@ export class QrformComponent {
     }
   }
 
+  // 🔲 Download only QR code (no sticker background)
   downloadRawQr() {
     const qrCanvas = this.stickerRef.nativeElement.querySelector('canvas');
     if (qrCanvas) {
@@ -54,5 +97,4 @@ export class QrformComponent {
     }
   }
 
-  
 }

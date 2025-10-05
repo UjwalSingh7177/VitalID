@@ -1,15 +1,22 @@
 <div class="profile-card animate">
   <h2 class="title">👤 {{ 'PROFILE.TITLE' | translate }}</h2>
 
+  <!-- 🌟 Personal Info -->
   <div class="info">
     <p><span class="label">{{ 'PROFILE.NAME' | translate }}:</span> {{ name }}</p>
     <p><span class="label">{{ 'PROFILE.EMAIL' | translate }}:</span> {{ email }}</p>
     <p><span class="label">{{ 'PROFILE.PHONE' | translate }}:</span> {{ phone }}</p>
+    <p><span class="label">{{ 'PROFILE.BLOOD_GROUP' | translate }}:</span> {{ bloodGroup }}</p>
+    <p><span class="label">{{ 'PROFILE.DOB' | translate }}:</span> {{ dob }}</p>
+    <p><span class="label">{{ 'PROFILE.HOME_ADDRESS' | translate }}:</span> {{ homeAddress }}</p>
   </div>
 
-  <!-- 🆘 Emergency Section -->
+  <!-- 🚨 Emergency Section -->
   <div class="emergency-section">
-    <h3>🚑 {{ 'PROFILE.EMERGENCY_TITLE' | translate }}</h3>
+    <h3>🚨 {{ 'PROFILE.EMERGENCY_TITLE' | translate }}</h3>
+    <p><span class="label">{{ 'PROFILE.EMERGENCY_CONTACT_NAME' | translate }}:</span> {{ emergencyContactName }}</p>
+    <p><span class="label">{{ 'PROFILE.EMERGENCY_CONTACT_PHONE' | translate }}:</span> {{ emergencyContactPhone }}</p>
+
     <ul>
       <li><strong>108:</strong> {{ 'PROFILE.EMERGENCY_108' | translate }}</li>
       <li><strong>112:</strong> {{ 'PROFILE.EMERGENCY_112' | translate }}</li>
@@ -19,5 +26,18 @@
     <button class="btn ambulance-btn" (click)="callAmbulance()">
       ☎️ {{ 'PROFILE.BUTTON_CALL' | translate }}
     </button>
+  </div>
+
+  <!-- 🏥 Medical Info -->
+  <div class="medical-section">
+    <h3>🏥 {{ 'PROFILE.MEDICAL_CONDITIONS' | translate }}</h3>
+    <p>{{ medicalConditions }}</p>
+    <p>{{ medications }}</p>
+  </div>
+
+  <!-- 🚗 Vehicle Info -->
+  <div class="vehicle-section">
+    <h3>🚗 {{ 'PROFILE.VEHICLE_NUMBER' | translate }} & {{ 'PROFILE.VEHICLE_TYPE' | translate }}</h3>
+    <p>{{ vehicleNumber }} / {{ vehicleType }}</p>
   </div>
 </div>
