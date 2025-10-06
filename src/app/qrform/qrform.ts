@@ -1,9 +1,10 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QRCodeComponent } from 'angularx-qrcode';
 import * as htmlToImage from 'html-to-image';
 import { TranslateModule } from '@ngx-translate/core';
+import { LanguageService } from '../service/language.service';
 
 @Component({
   selector: 'app-qrform',
@@ -12,43 +13,39 @@ import { TranslateModule } from '@ngx-translate/core';
   templateUrl: './qrform.html',
   styleUrls: ['./qrform.css']
 })
-export class QrformComponent {
+export class QrformComponent implements OnInit {
 
   // Personal Info
-  name = '';
-  email = '';
-  phone = '';
-  bloodGroup = '';
-  dob = '';
+  name = ''; email = ''; phone = ''; bloodGroup = ''; dob = '';
+  emergencyContactName = ''; emergencyContactPhone = '';
+  medicalConditions = ''; medications = '';
+  vehicleNumber = ''; vehicleType = ''; homeAddress = '';
 
-  // Emergency Contact
-  emergencyContactName = '';
-  emergencyContactPhone = '';
-
-  // Medical Info
-  medicalConditions = '';
-  medications = '';
-
-  // Vehicle Info
-  vehicleNumber = '';
-  vehicleType = '';
-  homeAddress = '';
-
-  // QR Design and Custom Text
+  // QR Design + Custom Text
   selectedDesign = 'design1';
   customText = '';
 
-  // Selected Language (default English)
+  // Language
   selectedLanguage = 'en';
 
   // QR Data + Reference
   qrData = '';
   @ViewChild('stickerRef', { static: false }) stickerRef!: ElementRef;
 
-  // Generate QR
+  constructor(private langService: LanguageService) {}
+
+  ngOnInit() {
+    this.selectedLanguage = this.langService.getLanguage();
+  }
+
+  onLanguageChange(event: any) {
+    const lang = event.target.value;
+    this.selectedLanguage = lang;
+    this.langService.setLanguage(lang);
+  }
+
   generateQr() {
     const baseUrl = 'https://vital-id-theta.vercel.app/profile';
-
     const params = new URLSearchParams({
       name: this.name,
       email: this.email,
@@ -62,13 +59,11 @@ export class QrformComponent {
       vehicleNumber: this.vehicleNumber,
       vehicleType: this.vehicleType,
       homeAddress: this.homeAddress,
-      lang: this.selectedLanguage  // include language
+      lang: this.selectedLanguage
     });
-
     this.qrData = `${baseUrl}?${params.toString()}`;
   }
 
-  // Download full sticker
   downloadQr() {
     if (this.stickerRef) {
       htmlToImage.toPng(this.stickerRef.nativeElement, { cacheBust: true, pixelRatio: 6 })
@@ -78,11 +73,10 @@ export class QrformComponent {
           link.download = 'sticker-qr.png';
           link.click();
         })
-        .catch(err => console.error('Error generating sticker:', err));
+        .catch(err => console.error(err));
     }
   }
 
-  // Download only QR
   downloadRawQr() {
     const qrCanvas = this.stickerRef.nativeElement.querySelector('canvas');
     if (qrCanvas) {

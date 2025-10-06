@@ -1,8 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LanguageService } from '../service/language.service';
 
 @Component({
   selector: 'app-profile',
@@ -13,34 +14,19 @@ import { TranslateService, TranslateModule } from '@ngx-translate/core';
 })
 export class ProfileComponent implements OnInit {
 
-  // Personal Info
-  name = '';
-  email = '';
-  phone = '';
-  bloodGroup = '';
-  dob = '';
-  homeAddress = '';
+  name = ''; email = ''; phone = ''; bloodGroup = ''; dob = ''; homeAddress = '';
+  emergencyContactName = ''; emergencyContactPhone = '';
+  medicalConditions = ''; medications = '';
+  vehicleNumber = ''; vehicleType = '';
 
-  // Emergency Contact
-  emergencyContactName = '';
-  emergencyContactPhone = '';
-
-  // Medical Info
-  medicalConditions = '';
-  medications = '';
-
-  // Vehicle Info
-  vehicleNumber = '';
-  vehicleType = '';
-
-  constructor(private route: ActivatedRoute, private translate: TranslateService) {}
+  constructor(private route: ActivatedRoute, private langService: LanguageService) {}
 
   ngOnInit() {
-    // Use language from QR or default English
-    const lang = this.route.snapshot.queryParamMap.get('lang') || 'en';
-    this.translate.use(lang);
+    // Use saved language from service
+    const lang = this.route.snapshot.queryParamMap.get('lang') || this.langService.getLanguage();
+    this.langService.setLanguage(lang);
 
-    // Personal Info
+    // Populate profile info
     this.name = this.route.snapshot.queryParamMap.get('name') || '';
     this.email = this.route.snapshot.queryParamMap.get('email') || '';
     this.phone = this.route.snapshot.queryParamMap.get('phone') || '';
@@ -48,15 +34,12 @@ export class ProfileComponent implements OnInit {
     this.dob = this.route.snapshot.queryParamMap.get('dob') || '';
     this.homeAddress = this.route.snapshot.queryParamMap.get('homeAddress') || '';
 
-    // Emergency Contact
     this.emergencyContactName = this.route.snapshot.queryParamMap.get('emergencyContactName') || '';
     this.emergencyContactPhone = this.route.snapshot.queryParamMap.get('emergencyContactPhone') || '';
 
-    // Medical Info
     this.medicalConditions = this.route.snapshot.queryParamMap.get('medicalConditions') || '';
     this.medications = this.route.snapshot.queryParamMap.get('medications') || '';
 
-    // Vehicle Info
     this.vehicleNumber = this.route.snapshot.queryParamMap.get('vehicleNumber') || '';
     this.vehicleType = this.route.snapshot.queryParamMap.get('vehicleType') || '';
   }
@@ -65,7 +48,6 @@ export class ProfileComponent implements OnInit {
     const selected = confirm(
       "Call emergency number?\n\n1️⃣ 108 - Ambulance\n2️⃣ 112 - General Emergency\n3️⃣ 1800 121 911 911 - RED.Health\n\nPress OK to call 108."
     );
-
     if (selected) window.location.href = 'tel:108';
   }
 }
