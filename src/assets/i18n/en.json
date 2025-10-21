@@ -31,6 +31,7 @@
     "SECTION_MEDICAL": "🏥 Medical Information",
     "SECTION_VEHICLE": "🚗 Vehicle Information",
     "SECTION_DESIGN": "🎨 QR Sticker Design",
+    "SECTION_LANGUAGE": "  Language Selection",
     "PLACEHOLDER_NAME": "Enter your name",
     "PLACEHOLDER_EMAIL": "Enter your email",
     "PLACEHOLDER_PHONE": "Enter your phone",
@@ -56,6 +57,6 @@
   "FOOTER": {
     "CONTACT_LABEL": "📩 Contact",
     "LINKEDIN_LABEL": "🔗 LinkedIn",
-    "MADE_WITH": "❤️ Made with"
+    "MADE_WITH": "Made with"
   }
 }

@@ -1,16 +1,14 @@
 <nav class="navbar">
   <div class="navbar-logo">
-    <a routerLink="/">{{ 'NAV.HOME' | translate }}</a>
+    <!-- Replace text with an image -->
+    <a routerLink="/" (click)="closeMenu()">
+      <img src="assets/Tag.png" alt="Logo" class="logo-img">
+    </a>
   </div>
 
   <div class="menu-toggle" (click)="toggleMenu()">☰</div>
 
   <ul class="navbar-links" id="navbar-links">
-    <!-- <li>
-      <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeMenu()">
-        {{ 'NAV.HOME' | translate }}
-      </a>
-    </li> -->
     <li>
       <a routerLink="/" routerLinkActive="active" (click)="closeMenu()">
         {{ 'NAV.GENERATE' | translate }}
