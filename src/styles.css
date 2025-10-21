@@ -1,4 +1,13 @@
 /* === GLOBAL PAGE === */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-color: #0f2027;
+}
+
 body {
   background: radial-gradient(circle at top left, #0f2027, #203a43, #2c5364);
   font-family: "Poppins", sans-serif;
