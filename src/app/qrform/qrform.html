@@ -2,30 +2,40 @@
   <h2 class="title">{{ 'QRFORM.TITLE' | translate }}</h2>
 
   <form (ngSubmit)="generateQr()" class="form">
-    
+
     <!-- 🧍 Personal Information -->
     <h3 class="section-heading">{{ 'QRFORM.SECTION_PERSONAL' | translate }}</h3>
     <input type="text" [(ngModel)]="name" name="name" [placeholder]="'QRFORM.PLACEHOLDER_NAME' | translate" required />
-    <input type="email" [(ngModel)]="email" name="email" [placeholder]="'QRFORM.PLACEHOLDER_EMAIL' | translate" required />
-    <input type="tel" [(ngModel)]="phone" name="phone" [placeholder]="'QRFORM.PLACEHOLDER_PHONE' | translate" required />
-    <input type="text" [(ngModel)]="bloodGroup" name="bloodGroup" [placeholder]="'QRFORM.PLACEHOLDER_BLOOD_GROUP' | translate" />
+    <input type="email" [(ngModel)]="email" name="email" [placeholder]="'QRFORM.PLACEHOLDER_EMAIL' | translate"
+      required />
+    <input type="tel" [(ngModel)]="phone" name="phone" [placeholder]="'QRFORM.PLACEHOLDER_PHONE' | translate"
+      required />
+    <input type="text" [(ngModel)]="bloodGroup" name="bloodGroup"
+      [placeholder]="'QRFORM.PLACEHOLDER_BLOOD_GROUP' | translate" />
     <input type="text" [(ngModel)]="dob" name="dob" [placeholder]="'QRFORM.PLACEHOLDER_DOB' | translate" />
 
     <!-- 🚨 Emergency Contact -->
     <h3 class="section-heading">{{ 'QRFORM.SECTION_EMERGENCY' | translate }}</h3>
-    <input type="text" [(ngModel)]="emergencyContactName" name="emergencyContactName" [placeholder]="'QRFORM.PLACEHOLDER_EMERGENCY_NAME' | translate" required />
-    <input type="tel" [(ngModel)]="emergencyContactPhone" name="emergencyContactPhone" [placeholder]="'QRFORM.PLACEHOLDER_EMERGENCY_PHONE' | translate" required />
+    <input type="text" [(ngModel)]="emergencyContactName" name="emergencyContactName"
+      [placeholder]="'QRFORM.PLACEHOLDER_EMERGENCY_NAME' | translate" required />
+    <input type="tel" [(ngModel)]="emergencyContactPhone" name="emergencyContactPhone"
+      [placeholder]="'QRFORM.PLACEHOLDER_EMERGENCY_PHONE' | translate" required />
 
     <!-- 🏥 Medical Information -->
     <h3 class="section-heading">{{ 'QRFORM.SECTION_MEDICAL' | translate }}</h3>
-    <textarea [(ngModel)]="medicalConditions" name="medicalConditions" [placeholder]="'QRFORM.PLACEHOLDER_MEDICAL_CONDITIONS' | translate"></textarea>
-    <textarea [(ngModel)]="medications" name="medications" [placeholder]="'QRFORM.PLACEHOLDER_MEDICATIONS' | translate"></textarea>
+    <textarea [(ngModel)]="medicalConditions" name="medicalConditions"
+      [placeholder]="'QRFORM.PLACEHOLDER_MEDICAL_CONDITIONS' | translate"></textarea>
+    <textarea [(ngModel)]="medications" name="medications"
+      [placeholder]="'QRFORM.PLACEHOLDER_MEDICATIONS' | translate"></textarea>
 
     <!-- 🚗 Vehicle Information -->
     <h3 class="section-heading">{{ 'QRFORM.SECTION_VEHICLE' | translate }}</h3>
-    <input type="text" [(ngModel)]="vehicleNumber" name="vehicleNumber" [placeholder]="'QRFORM.PLACEHOLDER_VEHICLE_NUMBER' | translate" />
-    <input type="text" [(ngModel)]="vehicleType" name="vehicleType" [placeholder]="'QRFORM.PLACEHOLDER_VEHICLE_TYPE' | translate" />
-    <input type="text" [(ngModel)]="homeAddress" name="homeAddress" [placeholder]="'QRFORM.PLACEHOLDER_HOME_ADDRESS' | translate" />
+    <input type="text" [(ngModel)]="vehicleNumber" name="vehicleNumber"
+      [placeholder]="'QRFORM.PLACEHOLDER_VEHICLE_NUMBER' | translate" />
+    <input type="text" [(ngModel)]="vehicleType" name="vehicleType"
+      [placeholder]="'QRFORM.PLACEHOLDER_VEHICLE_TYPE' | translate" />
+    <input type="text" [(ngModel)]="homeAddress" name="homeAddress"
+      [placeholder]="'QRFORM.PLACEHOLDER_HOME_ADDRESS' | translate" />
 
     <!-- 🎨 QR Design Selector -->
     <h3 class="section-heading">{{ 'QRFORM.SECTION_DESIGN' | translate }}</h3>
@@ -54,7 +64,8 @@
     </div>
 
     <!-- ✏️ Custom Sticker Text -->
-    <input type="text" [(ngModel)]="customText" name="customText" [placeholder]="'QRFORM.PLACEHOLDER_CUSTOM' | translate" />
+    <input type="text" [(ngModel)]="customText" name="customText"
+      [placeholder]="'QRFORM.PLACEHOLDER_CUSTOM' | translate" />
 
     <!-- 🔘 Submit Button -->
     <button type="submit" class="btn">{{ 'QRFORM.BUTTON_GENERATE' | translate }}</button>
@@ -64,12 +75,8 @@
   <div class="qr-wrapper" *ngIf="qrData">
     <div class="sticker" [ngClass]="selectedDesign" #stickerRef>
       <div class="qr-box">
-        <qrcode
-          [qrdata]="qrData"
-          [width]="200"
-          [errorCorrectionLevel]="'M'"
-          [colorDark]="'#000000'"
-          [colorLight]="'#ffffff'">
+        <qrcode [qrdata]="qrData" [width]="250" [errorCorrectionLevel]="'H'" [colorDark]="'#000000'"
+          [colorLight]="'#FFFFFF'">
         </qrcode>
       </div>
       <p class="sticker-text">
@@ -78,6 +85,7 @@
     </div>
 
     <button class="btn download-btn" (click)="downloadQr()">{{ 'QRFORM.BUTTON_DOWNLOAD' | translate }}</button>
-    <button class="btn download-btn alt" (click)="downloadRawQr()">{{ 'QRFORM.BUTTON_DOWNLOAD_QR' | translate }}</button>
+    <button class="btn download-btn alt" (click)="downloadRawQr()">{{ 'QRFORM.BUTTON_DOWNLOAD_QR' | translate
+      }}</button>
   </div>
 </div>
