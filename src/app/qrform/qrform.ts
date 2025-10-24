@@ -1,8 +1,7 @@
-import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { QRCodeComponent } from 'angularx-qrcode';
-import * as htmlToImage from 'html-to-image';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../service/language.service';
 import html2canvas from 'html2canvas';
@@ -19,6 +18,9 @@ export class QrformComponent {
   selectedDesign = 'design5';
   customText = '';
 
+  // ✅ add this missing property
+  selectedLanguage = 'en';
+
   name = '';
   email = '';
   phone = '';
@@ -33,6 +35,15 @@ export class QrformComponent {
   homeAddress = '';
 
   @ViewChild('stickerRef') stickerRef!: ElementRef;
+
+  constructor(private languageService: LanguageService) {}
+
+  /**
+   * 🌐 Change language when selection updates
+   */
+  onLanguageChange() {
+    this.languageService.setLanguage(this.selectedLanguage);
+  }
 
   /**
    * 🔹 Generate QR data
@@ -62,11 +73,7 @@ export class QrformComponent {
     if (!this.stickerRef) return;
 
     const element = this.stickerRef.nativeElement;
-
-    // Store original background
     const originalBg = element.style.backgroundColor;
-
-    // Ensure visible background for capture
     element.style.backgroundColor = '#ffffff';
 
     html2canvas(element, {
@@ -78,8 +85,6 @@ export class QrformComponent {
       link.download = 'QR_Sticker.png';
       link.href = canvas.toDataURL('image/png');
       link.click();
-
-      // Restore original background
       element.style.backgroundColor = originalBg;
     });
   }
