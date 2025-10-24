@@ -5,6 +5,7 @@ import { QRCodeComponent } from 'angularx-qrcode';
 import * as htmlToImage from 'html-to-image';
 import { TranslateModule } from '@ngx-translate/core';
 import { LanguageService } from '../service/language.service';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-qrform',
@@ -13,44 +14,86 @@ import { LanguageService } from '../service/language.service';
   templateUrl: './qrform.html',
   styleUrls: ['./qrform.css']
 })
-export class QrformComponent implements OnInit {
-  name = ''; email = ''; phone = ''; bloodGroup = ''; dob = '';
-  emergencyContactName = ''; emergencyContactPhone = '';
-  medicalConditions = ''; medications = '';
-  vehicleNumber = ''; vehicleType = ''; homeAddress = '';
-
-  selectedDesign = 'design1';
+export class QrformComponent {
+  qrData: string | null = null;
+  selectedDesign = 'design5';
   customText = '';
-  selectedLanguage = 'en';
-  qrData = '';
-  @ViewChild('stickerRef', { static: false }) stickerRef!: ElementRef;
 
-  constructor(private langService: LanguageService) {}
+  name = '';
+  email = '';
+  phone = '';
+  bloodGroup = '';
+  dob = '';
+  emergencyContactName = '';
+  emergencyContactPhone = '';
+  medicalConditions = '';
+  medications = '';
+  vehicleNumber = '';
+  vehicleType = '';
+  homeAddress = '';
 
-  ngOnInit() {
-    // Subscribe to language changes
-    this.langService.language$.subscribe(lang => {
-      this.selectedLanguage = lang;
-    });
-  }
+  @ViewChild('stickerRef') stickerRef!: ElementRef;
 
-  onLanguageChange(event: any) {
-    const lang = event.target.value;
-    this.langService.setLanguage(lang);
-  }
-
+  /**
+   * 🔹 Generate QR data
+   */
   generateQr() {
-    const baseUrl = 'https://vital-id-theta.vercel.app/profile';
-    const params = new URLSearchParams({
-      name: this.name, email: this.email, phone: this.phone, bloodGroup: this.bloodGroup,
-      dob: this.dob, emergencyContactName: this.emergencyContactName, emergencyContactPhone: this.emergencyContactPhone,
-      medicalConditions: this.medicalConditions, medications: this.medications,
-      vehicleNumber: this.vehicleNumber, vehicleType: this.vehicleType, homeAddress: this.homeAddress,
-      lang: this.selectedLanguage
-    });
-    this.qrData = `${baseUrl}?${params.toString()}`;
+    const data = {
+      name: this.name,
+      email: this.email,
+      phone: this.phone,
+      bloodGroup: this.bloodGroup,
+      dob: this.dob,
+      emergencyContactName: this.emergencyContactName,
+      emergencyContactPhone: this.emergencyContactPhone,
+      medicalConditions: this.medicalConditions,
+      medications: this.medications,
+      vehicleNumber: this.vehicleNumber,
+      vehicleType: this.vehicleType,
+      homeAddress: this.homeAddress
+    };
+    this.qrData = JSON.stringify(data);
   }
 
-  downloadQr() { /* same as before */ }
-  downloadRawQr() { /* same as before */ }
+  /**
+   * 🧾 Download full sticker (QR + text + design)
+   */
+  downloadQr() {
+    if (!this.stickerRef) return;
+
+    const element = this.stickerRef.nativeElement;
+
+    // Store original background
+    const originalBg = element.style.backgroundColor;
+
+    // Ensure visible background for capture
+    element.style.backgroundColor = '#ffffff';
+
+    html2canvas(element, {
+      scale: 3,
+      useCORS: true,
+      backgroundColor: '#ffffff'
+    }).then((canvas) => {
+      const link = document.createElement('a');
+      link.download = 'QR_Sticker.png';
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+
+      // Restore original background
+      element.style.backgroundColor = originalBg;
+    });
+  }
+
+  /**
+   * 🔲 Download only raw QR code (no design/text)
+   */
+  downloadRawQr() {
+    const qrElement = document.querySelector('qrcode canvas') as HTMLCanvasElement;
+    if (!qrElement) return;
+
+    const link = document.createElement('a');
+    link.download = 'QR_Code.png';
+    link.href = qrElement.toDataURL('image/png');
+    link.click();
+  }
 }
