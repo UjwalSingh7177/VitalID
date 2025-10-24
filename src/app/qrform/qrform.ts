@@ -40,8 +40,8 @@ export class QrformComponent {
     this.languageService.setLanguage(this.selectedLanguage);
   }
 
-  /** 🔹 Generate QR with live deployed profile URL */
-  generateQr() {
+  /** 🔹 Generate QR data */
+   generateQr() {
     const baseUrl = 'https://vital-id-hjl3.vercel.app/profile'; // ✅ live deployed link
     const params = new URLSearchParams({
       name: this.name,
@@ -77,30 +77,30 @@ export class QrformComponent {
     finalCanvas.width = width;
     finalCanvas.height = height;
 
-    // 🎨 Background + border
-    ctx.fillStyle = '#fff5f5';
+    // 🎨 Background and border
+    ctx.fillStyle = '#fff5f5'; // light pink
     ctx.fillRect(0, 0, width, height);
     ctx.strokeStyle = '#c62828';
     ctx.lineWidth = 8;
     ctx.strokeRect(20, 20, width - 40, height - 40);
 
-    // 🖼️ Draw QR image
+    // 🖼️ Draw the actual QR image
     const qrSize = 350;
     const qrX = (width - qrSize) / 2;
     const qrY = 120;
     ctx.drawImage(qrCanvas, qrX, qrY, qrSize, qrSize);
 
-    // 📝 Bottom text
+    // 📝 Add the bottom text
     ctx.fillStyle = '#b71c1c';
     ctx.font = 'bold 28px Poppins, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText(
-      this.customText || '⚠️ IN CASE OF EMERGENCY, SCAN TO VIEW PROFILE',
+      this.customText || '⚠️ IN CASE OF EMERGENCY, SCAN ME',
       width / 2,
       qrY + qrSize + 80
     );
 
-    // 💾 Download
+    // 💾 Download as image
     const link = document.createElement('a');
     link.download = 'QR_Sticker.png';
     link.href = finalCanvas.toDataURL('image/png');
