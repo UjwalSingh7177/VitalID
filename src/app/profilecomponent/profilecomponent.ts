@@ -17,24 +17,20 @@ export class ProfileComponent implements OnInit {
   emergencyContactName = ''; emergencyContactPhone = '';
   medicalConditions = ''; medications = '';
   vehicleNumber = ''; vehicleType = '';
+   isLoaded = false; 
 
   constructor(private route: ActivatedRoute,
               private translate: TranslateService,
               private langService: LanguageService) {}
 
-  ngOnInit() {
-    // If query param exists, update service
-    const langParam = this.route.snapshot.queryParamMap.get('lang');
-    if (langParam) {
-      this.langService.setLanguage(langParam);
-    }
+   async ngOnInit() {
+    const langParam = this.route.snapshot.queryParamMap.get('lang') || 'en';
 
-    // Subscribe to language changes
-    this.langService.language$.subscribe(lang => {
-      this.translate.use(lang);
-    });
+    // 👇 Load the translation BEFORE showing data
+    await this.langService.setLanguage(langParam);
+    await this.translate.use(langParam).toPromise();
 
-    // Load profile data from query params
+    // Now load profile data
     this.name = this.route.snapshot.queryParamMap.get('name') || '';
     this.email = this.route.snapshot.queryParamMap.get('email') || '';
     this.phone = this.route.snapshot.queryParamMap.get('phone') || '';
@@ -47,6 +43,8 @@ export class ProfileComponent implements OnInit {
     this.medications = this.route.snapshot.queryParamMap.get('medications') || '';
     this.vehicleNumber = this.route.snapshot.queryParamMap.get('vehicleNumber') || '';
     this.vehicleType = this.route.snapshot.queryParamMap.get('vehicleType') || '';
+
+    this.isLoaded = true; // ✅ Now show template
   }
 
   callAmbulance() {
